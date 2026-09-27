@@ -1,36 +1,61 @@
-# Railway Booking System — Hash Table Collision Resolution
+# Railway Booking System using Hash Table
 
-Assignment: Implement and compare Linear Probing, Quadratic Probing, and Double
-Hashing on a hash table storing railway booking IDs.
+## Objective
+
+To implement and compare different collision resolution techniques
+in a hash table for a railway booking system.
+
+## Collision Resolution Techniques
+
+1. Linear Probing
+2. Quadratic Probing
+3. Double Hashing
 
 ## Input
-Booking IDs: `23, 43, 13, 33, 53, 63, 73`
-Table size M = 10, h1(key) = key % 10, h2(key) = 7 - (key % 7)
 
-## Repository structure
-```
-src/hashtable.c            Full C source (all 3 techniques + probe counting)
-data/input.txt             Input booking IDs and search test set
-output/execution_output.txt  Captured console output of a run
-output/REPORT.docx / .pdf  Full written report: tables, load factor, complexity
-                           analysis, comparison table, conclusion
-```
+Booking IDs:
 
-## Build & run
-```bash
-gcc -Wall -o hashtable src/hashtable.c
-./hashtable
-```
+23, 43, 13, 33, 53, 63, 73
 
-## Summary of results
-| Method            | Keys inserted | Load factor | Max probes (search) |
-|-------------------|---------------|-------------|----------------------|
-| Linear Probing    | 7/7           | 0.70        | 6                    |
-| Quadratic Probing | 6/7 (1 overflow) | 0.60     | 6                    |
-| Double Hashing    | 7/7           | 0.70        | 2                    |
+Existing IDs:
 
-**Conclusion:** Double Hashing is the most suitable technique for this dataset —
-it inserted all records reliably and consistently needed the fewest probes,
-because it avoids both primary clustering (linear probing's weakness) and
-secondary clustering (quadratic probing's weakness). See `output/REPORT.docx`
-for the full analysis.
+33, 63
+
+Non-existing IDs:
+
+14, 99
+
+## Hash Functions
+
+Primary hash:
+
+h1(key) = key % 10
+
+Secondary hash:
+
+h2(key) = 7 - (key % 7)
+
+## Results
+
+| Method | Keys Inserted |
+|---|---:|
+| Linear Probing | 7/7 |
+| Quadratic Probing | 6/7 |
+| Double Hashing | 7/7 |
+
+## Complexity
+
+Average insertion/search: O(1)
+
+Worst-case insertion/search: O(m)
+
+Space complexity: O(m)
+
+## Conclusion
+
+The three collision resolution techniques were implemented and
+compared. Linear probing successfully inserted all seven keys but
+produced clustering. Quadratic probing reduced clustering but failed
+to insert one key for the given input and table size. Double hashing
+successfully inserted all seven keys and provided better distribution
+for this particular input.
