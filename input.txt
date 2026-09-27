@@ -1,0 +1,10 @@
+Booking IDs (7 records):
+23, 43, 13, 33, 53, 63, 73
+
+Hash table size (M): 10
+Primary hash function : h1(key) = key % 10
+Secondary hash function (used only for double hashing) : h2(key) = 7 - (key % 7)
+
+Search test set:
+  Existing booking IDs      : 33, 63
+  Non-existing booking IDs  : 14, 99

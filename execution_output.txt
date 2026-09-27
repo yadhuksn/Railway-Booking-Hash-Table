@@ -1,0 +1,118 @@
+Railway Booking Hash Table Simulation
+Booking IDs : 23 43 13 33 53 63 73 
+Table size M = 10 , h1(key) = key % 10 , h2(key) = 7 - (key % 7)
+
+============================================================
+ METHOD : LINEAR PROBING
+============================================================
+
+-- Insertion Log --
+Key 23 : inserted at index 3   (probes used = 1)
+Key 43 : inserted at index 4   (probes used = 2)
+Key 13 : inserted at index 5   (probes used = 3)
+Key 33 : inserted at index 6   (probes used = 4)
+Key 53 : inserted at index 7   (probes used = 5)
+Key 63 : inserted at index 8   (probes used = 6)
+Key 73 : inserted at index 9   (probes used = 7)
+
+----- Final Hash Table : LINEAR PROBING -----
+Index : Booking ID
+  0   : ---- (empty)
+  1   : ---- (empty)
+  2   : ---- (empty)
+  3   : 23
+  4   : 43
+  5   : 13
+  6   : 33
+  7   : 53
+  8   : 63
+  9   : 73
+
+Keys successfully inserted : 7 / 7
+Load Factor (n/m)          : 0.70
+
+-- Search : Existing Booking IDs --
+Search 33 : FOUND at index 6   (probes = 4)
+Search 63 : FOUND at index 8   (probes = 6)
+
+-- Search : Non-Existing Booking IDs --
+Search 14 : NOT FOUND             (probes = 7)
+Search 99 : NOT FOUND             (probes = 2)
+
+============================================================
+ METHOD : QUADRATIC PROBING
+============================================================
+
+-- Insertion Log --
+Key 23 : inserted at index 3   (probes used = 1)
+Key 43 : inserted at index 4   (probes used = 2)
+Key 13 : inserted at index 7   (probes used = 3)
+Key 33 : inserted at index 2   (probes used = 4)
+Key 53 : inserted at index 9   (probes used = 5)
+Key 63 : inserted at index 8   (probes used = 6)
+Key 73 : INSERTION FAILED (table full along probe sequence / overflow)
+
+----- Final Hash Table : QUADRATIC PROBING -----
+Index : Booking ID
+  0   : ---- (empty)
+  1   : ---- (empty)
+  2   : 33
+  3   : 23
+  4   : 43
+  5   : ---- (empty)
+  6   : ---- (empty)
+  7   : 13
+  8   : 63
+  9   : 53
+
+Keys successfully inserted : 6 / 7
+Load Factor (n/m)          : 0.60
+
+-- Search : Existing Booking IDs --
+Search 33 : FOUND at index 2   (probes = 4)
+Search 63 : FOUND at index 8   (probes = 6)
+
+-- Search : Non-Existing Booking IDs --
+Search 14 : NOT FOUND             (probes = 2)
+Search 99 : NOT FOUND             (probes = 2)
+
+============================================================
+ METHOD : DOUBLE HASHING
+============================================================
+
+-- Insertion Log --
+Key 23 : inserted at index 3   (probes used = 1)
+Key 43 : inserted at index 9   (probes used = 2)
+Key 13 : inserted at index 4   (probes used = 2)
+Key 33 : inserted at index 5   (probes used = 2)
+Key 53 : inserted at index 6   (probes used = 2)
+Key 63 : inserted at index 0   (probes used = 2)
+Key 73 : inserted at index 7   (probes used = 2)
+
+----- Final Hash Table : DOUBLE HASHING -----
+Index : Booking ID
+  0   : 63
+  1   : ---- (empty)
+  2   : ---- (empty)
+  3   : 23
+  4   : 13
+  5   : 33
+  6   : 53
+  7   : 73
+  8   : ---- (empty)
+  9   : 43
+
+Keys successfully inserted : 7 / 7
+Load Factor (n/m)          : 0.70
+
+-- Search : Existing Booking IDs --
+Search 33 : FOUND at index 5   (probes = 2)
+Search 63 : FOUND at index 0   (probes = 2)
+
+-- Search : Non-Existing Booking IDs --
+Search 14 : NOT FOUND             (probes = 2)
+Search 99 : NOT FOUND             (probes = 3)
+
+============================================================
+ END OF SIMULATION
+============================================================
